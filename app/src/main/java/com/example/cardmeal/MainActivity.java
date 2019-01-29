@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
                 case R.id.navigation_search:
                     mTextMessage.setText(getString(R.string.title_search));
                     return true;
@@ -29,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_media:
                     mTextMessage.setText(getString(R.string.title_media));
+                    return true;
+                case R.id.navigation_settings:
+                    mTextMessage.setText(getString(R.string.title_settings));
                     return true;
 
             }
@@ -47,19 +48,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoSearch(View view) {
-        Log.d("nav-action", "GOTO SEARCH");
+
     }
 
     public void gotoMap(View view) {
-        Log.d("nav-action", "GOTO MAP");
     }
 
     public void gotoMedia(View view) {
-        Log.d("nav-action", "GOTO MEDIA");
     }
 
     public void gotoSettings(View view) {
-        Log.d("nav-action", "GOTO SETTINGS");
+
     }
 
 }
