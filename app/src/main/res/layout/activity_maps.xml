@@ -1,8 +1,23 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:id="@+id/map_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cardmeal.MapsActivity" />
+    tools:context=".MapsActivity">
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        tools:context="com.example.cardmeal.MapsActivity" />
+
+</android.support.constraint.ConstraintLayout>
