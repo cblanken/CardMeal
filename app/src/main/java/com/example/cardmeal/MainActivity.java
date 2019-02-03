@@ -27,12 +27,8 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText(getString(R.string.title_map));
                     gotoMap(item);
                     return true;
-                case R.id.navigation_media:
-                    mTextMessage.setText(getString(R.string.title_media));
-                    gotoMedia(item);
-                    return true;
-                case R.id.navigation_settings:
-                    mTextMessage.setText(getString(R.string.title_settings));
+                case R.id.navigation_more:
+                    mTextMessage.setText(getString(R.string.title_more));
                     gotoSettings(item);
                     return true;
 
@@ -58,11 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void gotoMap(MenuItem item) {
         Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
-    }
-
-    public void gotoMedia(MenuItem item) {
-        Intent intent = new Intent(this, Media.class);
         startActivity(intent);
     }
 

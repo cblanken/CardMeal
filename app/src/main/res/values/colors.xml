@@ -8,4 +8,6 @@
     <color name="customColorPrimaryDark">#444400</color>
     <color name="customColorAccent">#904000</color>
 
+    <!--<color name="ic_launcher_background">#FF0F0F</color>-->
+
 </resources>
