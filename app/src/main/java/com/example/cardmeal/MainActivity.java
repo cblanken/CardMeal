@@ -1,6 +1,7 @@
 package com.example.cardmeal;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText(getString(R.string.title_more));
                     gotoSettings(item);
                     return true;
-
             }
             return false;
         }
