@@ -1,14 +1,11 @@
 package com.example.cardmeal;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_more:
                     mTextMessage.setText(getString(R.string.title_more));
-                    gotoSettings(item);
+                    gotoMore(item);
                     return true;
             }
             return false;
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoSearch(MenuItem item) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 
@@ -57,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void gotoSettings(MenuItem item) {
-        Intent intent = new Intent(this, SettingsActivity.class);
+    public void gotoMore(MenuItem item) {
+        Intent intent = new Intent(getApplicationContext(), OtherActivity.class);
         startActivity(intent);
     }
 
