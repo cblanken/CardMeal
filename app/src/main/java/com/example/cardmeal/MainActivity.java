@@ -5,58 +5,72 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public abstract class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private TextView mTextMessage;
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_search:
-                    mTextMessage.setText(getString(R.string.title_search));
-                    gotoSearch(item);
-                    return true;
-                case R.id.navigation_map:
-                    mTextMessage.setText(getString(R.string.title_map));
-                    gotoMap(item);
-                    return true;
-                case R.id.navigation_more:
-                    mTextMessage.setText(getString(R.string.title_more));
-                    gotoMore(item);
-                    return true;
-            }
-            return false;
-        }
-    };
+    protected BottomNavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        navigationView.setOnNavigationItemSelectedListener(this);
     }
 
-    public void gotoSearch(MenuItem item) {
-        Intent intent = new Intent(this, SearchActivity.class);
-        startActivity(intent);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateNavigationBarState();
     }
 
-    public void gotoMap(MenuItem item) {
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
+    @Override
+    public void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
     }
 
-    public void gotoMore(MenuItem item) {
-        Intent intent = new Intent(getApplicationContext(), OtherActivity.class);
-        startActivity(intent);
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        navigationView.postDelayed(() -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_search:
+                    startActivity(new Intent(this, SearchActivity.class));
+                    break;
+                case R.id.navigation_map:
+                    startActivity(new Intent(this, MapsActivity.class));
+                    break;
+                case R.id.navigation_more:
+                    startActivity(new Intent(this, MoreActivity.class));
+                    break;
+            }
+            finish();
+        }, 100);
+        return true;
     }
+
+    private void updateNavigationBarState() {
+        int actionId = getNavigationMenuItemId();
+        selectBottomNavigationBarItem(actionId);
+    }
+
+    private void selectBottomNavigationBarItem(int itemId) {
+        MenuItem item = navigationView.getMenu().findItem(itemId);
+        item.setChecked(true);
+    }
+
+    abstract int getContentViewId();
+
+    abstract int getNavigationMenuItemId();
 
 }
