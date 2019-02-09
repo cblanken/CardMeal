@@ -117,6 +117,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps2">Map</string>
+    <string name="reviews">Reviews</string>
+    <string name="dropdown_double_chevron">dropdown_double_chevron</string>
+    <string name="open_closed">Open/Closed</string>
 
 
 </resources>

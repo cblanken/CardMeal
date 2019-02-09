@@ -1,18 +1,19 @@
 package com.example.cardmeal;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
-
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class SearchActivity extends MainActivity {
 
     private String searchString;
     private View searchView;
-    private View recyclerView;
-    private ArrayList<View> listItems;
+    private LinkedList<String> restaurantNames;
+    private RecyclerView recyclerView;
+    private RestaurantListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +22,30 @@ public class SearchActivity extends MainActivity {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_search, null), params);
 
-        // TODO: remove, added for testing display
-        addContentView(getLayoutInflater().inflate(R.layout.restaurant_card, null), params);
-
+        // TODO: dynamically map data for cards
         searchView = findViewById(R.id.searchView);
+        restaurantNames = new LinkedList<String>();
+        restaurantNames.add("[1] Einstein Bros. Bagels");
+        restaurantNames.add("[2] Starbucks");
+        restaurantNames.add("[3] Twisted Taco");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[4] The Ville Grill");
+
+
+        adapter = new RestaurantListAdapter(this, restaurantNames);
         recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
