@@ -5,7 +5,8 @@
     <color name="colorAccent">#FDB913</color>
 
     <color name="customColorPrimary">#AD0000</color>
-    <color name="customColorPrimaryDark">#000000</color>
+    <color name="customColorPrimaryDark">#2F2F2F</color>
     <color name="customColorAccent">#FDB913</color>
 
+    <color name="ic_launcher_background">#3C3939</color>
 </resources>
