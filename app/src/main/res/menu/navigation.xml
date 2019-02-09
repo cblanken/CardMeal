@@ -12,8 +12,14 @@
         android:title="@string/title_map" />
 
     <item
+        android:id="@+id/navigation_media"
+        android:icon="@drawable/ic_media"
+        android:title="@string/title_media" />
+
+    <item
         android:id="@+id/navigation_more"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_more" />
+
 
 </menu>

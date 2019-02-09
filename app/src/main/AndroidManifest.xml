@@ -42,7 +42,7 @@
             android:name=".MoreActivity"
             android:label="@string/title_more" />
         <activity
-            android:name=".Media"
+            android:name=".MediaActivity"
             android:label="@string/title_activity_media"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

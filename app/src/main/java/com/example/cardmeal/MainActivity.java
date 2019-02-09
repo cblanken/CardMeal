@@ -5,13 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 public abstract class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -27,6 +22,7 @@ public abstract class MainActivity extends AppCompatActivity implements BottomNa
 
         navigationView = (BottomNavigationView) findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
+        navigationView.setOnClickListener(null);
     }
 
     @Override
@@ -51,8 +47,13 @@ public abstract class MainActivity extends AppCompatActivity implements BottomNa
                 case R.id.navigation_map:
                     startActivity(new Intent(this, MapsActivity.class));
                     break;
+                case R.id.navigation_media:
+                    startActivity(new Intent(this, MediaActivity.class));
+                    break;
                 case R.id.navigation_more:
                     startActivity(new Intent(this, MoreActivity.class));
+                    break;
+                default:
                     break;
             }
             finish();
