@@ -43,8 +43,7 @@
             android:label="@string/title_more" />
         <activity
             android:name=".MediaActivity"
-            android:label="@string/title_activity_media"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_media"/>
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_maps" />
