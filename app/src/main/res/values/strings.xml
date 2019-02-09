@@ -10,6 +10,35 @@
     <string name="title_maps">Map</string>
     <string name="title_more">More</string>
 
+    <string name="card_img">Card Image</string>
+
+    <string name="Lorem2">Lorem ipsum</string>
+    <string name="Lorem5">Lorem ipsum dolor sit, amet.</string>
+    <string name="Lorem10">Lorem ipsum dolor sit amet consectetur, adipiscing elit senectus
+        imperdiet.</string>
+    <string name="Lorem20">Lorem ipsum dolor sit amet consectetur adipiscing elit cum, nascetur
+        iaculis tempor ultricies dignissim scelerisque tristique interdum parturient, rutrum
+        euismod.</string>
+    <string name="Lorem25">Lorem ipsum dolor sit amet consectetur adipiscing elit cum, nascetur
+        iaculis tempor ultricies dignissim scelerisque tristique interdum parturient, rutrum
+        euismod dapibus bibendum blandit lobortis himenaeos.</string>
+    <string name="Lorem50"><p>Lorem ipsum dolor sit amet consectetur adipiscing elit donec,
+        venenatis duis sollicitudin varius metus euismod. Ornare enim augue at erat diam velit
+        cursus ante, aenean praesent cubilia convallis penatibus nulla ac auctor morbi, nec aliquam
+        cum nascetur malesuada lectus scelerisque pharetra. Platea neque nibh congue odio,
+        phasellus pellentesque turpis.</p></string>
+    <string name="Lorem100">Lorem ipsum dolor sit amet consectetur adipiscing elit etiam, netus
+        scelerisque sagittis magnis parturient malesuada torquent lectus, fusce quam cursus nam
+        diam curabitur massa. Convallis auctor vehicula nisi orci euismod ornare, non gravida
+        sodales id dis augue magna, tincidunt sem nec iaculis a. Duis porttitor montes justo varius
+        ridiculus vivamus eros himenaeos tempus, sociis interdum taciti fringilla pretium nisl
+        mollis sapien, eget elementum mi inceptos placerat imperdiet ultricies donec. Lacus
+        volutpat sociosqu quis venenatis urna erat potenti, suscipit tellus porta dignissim odio at
+        rutrum, tortor dapibus eleifend aliquam nulla congue. Egestas facilisis metus semper est
+        consequat, turpis ante natoque arcu.</string>
+
+
+
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->

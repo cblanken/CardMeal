@@ -21,6 +21,9 @@ public class SearchActivity extends MainActivity {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_search, null), params);
 
+        // TODO: remove, added for testing display
+        addContentView(getLayoutInflater().inflate(R.layout.restaurant_card, null), params);
+
         searchView = findViewById(R.id.searchView);
         recyclerView = findViewById(R.id.recyclerView);
     }
