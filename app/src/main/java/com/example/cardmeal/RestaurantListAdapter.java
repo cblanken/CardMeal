@@ -70,4 +70,9 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     public int getItemCount() {
         return mRestaurantList.size();
     }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }

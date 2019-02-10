@@ -56,11 +56,28 @@ public class SearchActivity extends MainActivity {
                 getString (R.string.Lorem25),
                 1,
                 true));
+        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
+                getString (R.string.Lorem25),
+                1,
+                true));
+        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
+                getString (R.string.Lorem25),
+                1,
+                true));
+        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
+                getString (R.string.Lorem25),
+                1,
+                true));
 
         adapter = new RestaurantListAdapter(this, restaurantCards);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // TODO: optimize recyclerView (laggy scrolling)
+//        recyclerView.setNestedScrollingEnabled(false);
+//        recyclerView.getAdapter().setHasStableIds(true);
+//        recyclerView.setHasFixedSize(true);
 
     }
 
