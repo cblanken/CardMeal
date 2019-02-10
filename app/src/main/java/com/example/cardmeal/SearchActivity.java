@@ -22,23 +22,19 @@ public class SearchActivity extends MainActivity {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_search, null), params);
 
-        // TODO: dynamically map data for cards
         searchView = findViewById(R.id.searchView);
+
+        // TODO: dynamically map data to cards,
+
         restaurantNames = new LinkedList<String>();
         restaurantNames.add("[1] Einstein Bros. Bagels");
         restaurantNames.add("[2] Starbucks");
         restaurantNames.add("[3] Twisted Taco");
         restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[4] The Ville Grill");
+        restaurantNames.add("[5] Panda Express");
+        restaurantNames.add("[6] Subway");
+        restaurantNames.add("[7] Papa John's");
+
 
 
         adapter = new RestaurantListAdapter(this, restaurantNames);

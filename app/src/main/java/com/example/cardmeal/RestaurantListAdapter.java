@@ -58,7 +58,11 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
         // Retrieve the data for that position
         String mCurrent = mRestaurantList.get(position);
+
+        // TODO: Create data class to package all necessary data for cards
         // TODO: Add the data to the view
+        holder.restaurantName.setText(mCurrent);
+        holder.restaurantDescription.setText(mCurrent);
 
     }
 
