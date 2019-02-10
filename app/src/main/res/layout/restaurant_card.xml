@@ -101,12 +101,12 @@
                 android:layout_marginBottom="4dp"
                 android:text="@string/reviews"
                 app:layout_constraintBottom_toTopOf="@+id/divider"
-                app:layout_constraintEnd_toStartOf="@+id/openStatus"
+                app:layout_constraintEnd_toStartOf="@+id/cardOpenStatus"
                 app:layout_constraintStart_toEndOf="@+id/cardRating"
                 app:layout_constraintTop_toBottomOf="@+id/cardName" />
 
             <TextView
-                android:id="@+id/openStatus"
+                android:id="@+id/cardOpenStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -117,7 +117,8 @@
                 android:text="@string/open_closed"
                 app:layout_constraintBottom_toTopOf="@+id/cardDescription"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardName" />
+                app:layout_constraintTop_toBottomOf="@+id/cardName"
+                tools:text="@string/open_closed" />
 
             <View
                 android:id="@+id/divider"
@@ -146,12 +147,13 @@
                 android:text="@string/Lorem10"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/expand_card_btn"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/divider" />
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                tools:text="@string/Lorem10" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/expand_card_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"

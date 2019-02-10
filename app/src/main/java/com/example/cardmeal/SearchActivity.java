@@ -9,9 +9,10 @@ import java.util.LinkedList;
 
 public class SearchActivity extends MainActivity {
 
+    // TODO: map search string / query
     private String searchString;
     private View searchView;
-    private LinkedList<String> restaurantNames;
+    private LinkedList<RestaurantCardData> restaurantCards;
     private RecyclerView recyclerView;
     private RestaurantListAdapter adapter;
 
@@ -26,18 +27,37 @@ public class SearchActivity extends MainActivity {
 
         // TODO: dynamically map data to cards,
 
-        restaurantNames = new LinkedList<String>();
-        restaurantNames.add("[1] Einstein Bros. Bagels");
-        restaurantNames.add("[2] Starbucks");
-        restaurantNames.add("[3] Twisted Taco");
-        restaurantNames.add("[4] The Ville Grill");
-        restaurantNames.add("[5] Panda Express");
-        restaurantNames.add("[6] Subway");
-        restaurantNames.add("[7] Papa John's");
+        restaurantCards = new LinkedList<RestaurantCardData>();
+        restaurantCards.add(new RestaurantCardData("[1] Einstein Bros. Bagels",
+                "Bagels",
+                5,
+                true));
+        restaurantCards.add(new RestaurantCardData("[2] Starbucks",
+                "Coffee",
+                3,
+                true));
+        restaurantCards.add( new RestaurantCardData("[3] Twisted Taco",
+                "Tacos",
+                4,
+                true));
+        restaurantCards.add(new RestaurantCardData("[4] Ville Grille",
+                getString(R.string.Lorem20),
+                2,
+                true));
+        restaurantCards.add(new RestaurantCardData("[5] Panda Express",
+                "Pandas?",
+                4,
+                true));
+        restaurantCards.add( new RestaurantCardData("[6] Subway",
+                "Subs",
+                4,
+                true));
+        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
+                getString (R.string.Lorem25),
+                1,
+                true));
 
-
-
-        adapter = new RestaurantListAdapter(this, restaurantNames);
+        adapter = new RestaurantListAdapter(this, restaurantCards);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
