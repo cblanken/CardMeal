@@ -25,8 +25,7 @@ public class SearchActivity extends MainActivity {
 
         searchView = findViewById(R.id.searchView);
 
-        // TODO: dynamically map data to cards,
-
+        // TODO: dynamically retrieve and load data to cards,
         restaurantCards = new LinkedList<RestaurantCardData>();
         restaurantCards.add(new RestaurantCardData("[1] Einstein Bros. Bagels",
                 "Bagels",
@@ -74,11 +73,7 @@ public class SearchActivity extends MainActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // TODO: optimize recyclerView (laggy scrolling)
-//        recyclerView.setNestedScrollingEnabled(false);
-//        recyclerView.getAdapter().setHasStableIds(true);
-//        recyclerView.setHasFixedSize(true);
-
+        // TODO: optimize recyclerView (laggy scrolling), implement Glide? [https://github.com/bumptech/glide]
     }
 
     @Override

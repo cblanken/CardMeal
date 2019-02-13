@@ -9,6 +9,7 @@ public class MoreActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO: construct settings/other view layout
         LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_more, null), params);
     }

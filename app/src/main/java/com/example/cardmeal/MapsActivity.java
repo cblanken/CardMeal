@@ -18,6 +18,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO: load banner/card if restaurant selected
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_maps, null), params);
 
@@ -41,6 +42,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        // TODO: lookup nearby restaurants on load and zoom and/or lock view of UofL
         // Add a marker in Sydney and move the camera
         LatLng uofl = new LatLng(38.215, -85.758);
         mMap.addMarker(new MarkerOptions().position(uofl).title("Marker in Louisville"));

@@ -9,6 +9,9 @@ public class MediaActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO: construct social media view layout
+        // TODO: social media API setup (Twitter, Facebook, Yelp)
+
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_media, null), params);
     }

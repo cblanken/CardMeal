@@ -43,6 +43,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         @Override
         public void onClick(View v) {
             restaurantName.setText("CLICKED!");
+            // TODO: link to appropriate view (map, social media, menu)
         }
     }
 
