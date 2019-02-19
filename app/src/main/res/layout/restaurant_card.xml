@@ -4,16 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/restaurantCard"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="130dp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,23 +20,13 @@
             android:id="@+id/cardViewLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="0dp">
-
-            <View
-                android:id="@+id/cardTop"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginBottom="7dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:minHeight="0dp"
+            android:theme="@style/AppTheme">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="101dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
@@ -61,8 +49,10 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
+                android:maxLines="1"
                 android:text="@string/Lorem2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/cardRating"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,6 +90,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/reviews"
+                android:textColor="@color/cardview_light_background"
                 app:layout_constraintBottom_toTopOf="@+id/divider"
                 app:layout_constraintEnd_toStartOf="@+id/cardOpenStatus"
                 app:layout_constraintStart_toEndOf="@+id/cardRating"
@@ -115,6 +106,7 @@
                 android:layout_marginBottom="8dp"
                 android:gravity="end"
                 android:text="@string/open_closed"
+                android:textColor="@color/cardview_light_background"
                 app:layout_constraintBottom_toTopOf="@+id/cardDescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardName"
@@ -122,12 +114,12 @@
 
             <View
                 android:id="@+id/divider"
-                android:layout_width="387dp"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="?android:attr/listDivider"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@color/cardview_light_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -136,20 +128,21 @@
             <TextView
                 android:id="@+id/cardDescription"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="57dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 android:gravity="start"
                 android:text="@string/Lorem10"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/expand_card_btn"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/cardReviews"
                 tools:text="@string/Lorem10" />
 
             <ImageView
@@ -158,9 +151,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="7dp"
                 android:contentDescription="@string/dropdown_double_chevron"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/cardBottom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/ic_dropdown_double_chevron" />
 
@@ -168,12 +161,14 @@
                 android:id="@+id/cardBottom"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="7dp"
-                android:background="?android:attr/listDivider"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@color/cardview_light_background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
