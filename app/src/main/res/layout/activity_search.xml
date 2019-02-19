@@ -10,17 +10,29 @@
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
         android:baselineAligned="true"
         android:gravity="center_vertical"
         android:inputType="text"
         android:queryHint="@string/title_search"
+        android:theme="@style/AppTheme"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        android:theme="@style/AppTheme"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/searchGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <android.support.constraint.Guideline
         android:id="@+id/searchGuideline"
@@ -28,16 +40,4 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_end="56dp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:scrollbars="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/searchGuideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 </android.support.constraint.ConstraintLayout>

@@ -8,20 +8,32 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.cardmeal.MediaActivity">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mediaTabLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_gravity="top"
+        android:background="@color/colorPrimary"
+        android:theme="@style/AppTheme"
+        app:layout_constraintBottom_toTopOf="@+id/mediaPager"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="@color/cardview_light_background"
+        app:tabSelectedTextColor="@color/cardview_light_background"
+        app:tabTextColor="@color/cardview_light_background" />
+
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mediaPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/mediaGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/mediaTabLayout"
+        tools:layout_editor_absoluteX="0dp">
+
+    </android.support.v4.view.ViewPager>
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/mediaGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

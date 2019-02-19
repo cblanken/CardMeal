@@ -10,7 +10,7 @@ public class MoreActivity extends MainActivity {
         super.onCreate(savedInstanceState);
 
         // TODO: construct settings/other view layout
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_more, null), params);
     }
 
