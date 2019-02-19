@@ -12,7 +12,9 @@ public class MediaActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // TODO: construct social media view layout
+        // TODO: add swipe functionality between tabs (via fragments)
         // TODO: social media API setup (Twitter, Facebook, Yelp)
 
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
