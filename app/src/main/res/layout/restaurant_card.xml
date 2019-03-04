@@ -11,7 +11,16 @@
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        app:cardBackgroundColor="@color/colorPrimaryDark"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@color/customColorPrimaryDark"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -67,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="48dp"
@@ -147,15 +156,18 @@
 
             <ImageView
                 android:id="@+id/expand_card_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="7dp"
                 android:contentDescription="@string/dropdown_double_chevron"
                 app:layout_constraintBottom_toTopOf="@+id/cardBottom"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_dropdown_double_chevron" />
+                app:layout_constraintStart_toEndOf="@+id/cardDescription"
+                app:srcCompat="@drawable/dropdown_double_chevron_light_no_background" />
 
             <View
                 android:id="@+id/cardBottom"
