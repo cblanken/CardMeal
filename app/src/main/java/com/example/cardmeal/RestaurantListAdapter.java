@@ -3,6 +3,7 @@ package com.example.cardmeal;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
     private Context context;
     private LayoutInflater mInflater;
-    private  LinkedList<RestaurantCardData> mRestaurantList;
+    private LinkedList<RestaurantCardData> mRestaurantList;
+    private int mExpandedPosition = -1;
+    private ViewGroup recyclerView;
 
     public RestaurantListAdapter(Context context, LinkedList<RestaurantCardData> restaurantList) {
         mInflater = LayoutInflater.from(context);
@@ -23,7 +26,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     }
 
     public class RestaurantViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+        private View details;
         private TextView restaurantName;
         private TextView restaurantDescription;
         private RatingBar restaurantRating;
@@ -32,12 +35,14 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
         public RestaurantViewHolder(View itemView, RestaurantListAdapter adapter) {
             super(itemView);
+            details = itemView.findViewById(R.id.details);
             restaurantName = (TextView) itemView.findViewById(R.id.cardName);
             restaurantDescription = (TextView) itemView.findViewById(R.id.cardDescription);
             restaurantOpenStatus = (TextView) itemView.findViewById(R.id.cardOpenStatus);
             restaurantRating = (RatingBar) itemView.findViewById(R.id.cardRating);
             this.mAdapter = (RecyclerView.Adapter) adapter;
             itemView.setOnClickListener(this);
+
         }
 
         @Override
@@ -64,6 +69,18 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         holder.restaurantDescription.setText(mCurrent.description);
         holder.restaurantRating.setNumStars(mCurrent.rating);
         holder.restaurantOpenStatus.setText(this.context.getResources().getString(R.string.open_closed));
+
+        final boolean isExpanded = position == mExpandedPosition;
+        holder.details.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.itemView.setActivated(isExpanded);
+        holder.itemView.findViewById(R.id.expand_card_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mExpandedPosition = isExpanded ? -1 : position;
+                TransitionManager.beginDelayedTransition((ViewGroup)holder.itemView.getParent());
+                notifyDataSetChanged();
+            }
+        });
     }
 
 
