@@ -3,9 +3,19 @@ package com.example.cardmeal;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 import java.util.LinkedList;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class SearchActivity extends MainActivity {
 
@@ -16,6 +26,9 @@ public class SearchActivity extends MainActivity {
     private RecyclerView recyclerView;
     private RestaurantListAdapter adapter;
 
+    private DatabaseReference database;
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,48 +38,21 @@ public class SearchActivity extends MainActivity {
 
         searchView = findViewById(R.id.searchView);
 
-        // TODO: dynamically retrieve and load data to cards,
         restaurantCards = new LinkedList<RestaurantCardData>();
-        restaurantCards.add(new RestaurantCardData("[1] Einstein Bros. Bagels",
-                "Bagels",
-                5,
-                true));
-        restaurantCards.add(new RestaurantCardData("[2] Starbucks",
-                "Coffee",
-                3,
-                true));
-        restaurantCards.add( new RestaurantCardData("[3] Twisted Taco",
-                "Tacos",
-                4,
-                true));
-        restaurantCards.add(new RestaurantCardData("[4] Ville Grille",
-                getString(R.string.Lorem20),
-                2,
-                true));
-        restaurantCards.add(new RestaurantCardData("[5] Panda Express",
-                "Pandas?",
-                4,
-                true));
-        restaurantCards.add( new RestaurantCardData("[6] Subway",
-                "Subs",
-                4,
-                true));
-        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
-                getString (R.string.Lorem25),
-                1,
-                true));
-        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
-                getString (R.string.Lorem25),
-                1,
-                true));
-        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
-                getString (R.string.Lorem25),
-                1,
-                true));
-        restaurantCards.add(new RestaurantCardData("[7] Papa John's",
-                getString (R.string.Lorem25),
-                1,
-                true));
+
+        database = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword("arieltrnr@gmail.com", "Z$yadlP055")
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete( Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            getRestaurantData();
+                        } else {
+                            Log.e("firebase", "authentication failed"); // do something here??
+                        }
+                    }
+                });
 
         adapter = new RestaurantListAdapter(this, restaurantCards);
         recyclerView = findViewById(R.id.recyclerView);
@@ -74,6 +60,28 @@ public class SearchActivity extends MainActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // TODO: optimize recyclerView (laggy scrolling), implement Glide? [https://github.com/bumptech/glide]
+    }
+
+    public void getRestaurantData()
+    {
+        database.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    restaurantCards.add(new RestaurantCardData(ds.child("Name").getValue(String.class),
+                            ds.child("Description").getValue(String.class),
+                            ds.child("Menu").getValue(String.class),
+                            ds.child("Days").getValue(String.class),
+                            ds.child("Hours").getValue(String.class),
+                            ds.child("Status").getValue(String.class)));
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
     }
 
     @Override
