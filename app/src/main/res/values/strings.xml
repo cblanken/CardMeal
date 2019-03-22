@@ -130,5 +130,6 @@
     //Twitter API keys
     <string name="TWITTER_CONSUMER_KEY">jJiFJI2n7gNwjvV13zHZAU16k</string>
     <string name="TWITTER_CONSUMER_SECRET">yEHmd50qrrkePpKYGRUvkAX742moKfpWZUYbz8gtD5Iqws6aRQ</string>
+    <string name="title_activity_twitter">TwitterActivity</string>
 
 </resources>

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 import java.util.LinkedList;
+
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +31,7 @@ public class SearchActivity extends MainActivity {
     private DatabaseReference database;
     private FirebaseAuth auth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +43,11 @@ public class SearchActivity extends MainActivity {
 
         restaurantCards = new LinkedList<RestaurantCardData>();
 
+        FirebaseApp.initializeApp(this);
+
         database = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
-        auth.signInWithEmailAndPassword("arieltrnr@gmail.com", "Z$yadlP055")
+        auth.signInWithEmailAndPassword("cardmeal@gmail.com", "Z$yadlP055")
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete( Task<AuthResult> task) {
