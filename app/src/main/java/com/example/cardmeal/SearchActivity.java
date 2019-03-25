@@ -32,12 +32,10 @@ public class SearchActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_search, null), params);
 
         searchView = findViewById(R.id.searchView);
-
         restaurantCards = new LinkedList<RestaurantCardData>();
 
         database = FirebaseDatabase.getInstance().getReference();
@@ -58,12 +56,10 @@ public class SearchActivity extends MainActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         // TODO: optimize recyclerView (laggy scrolling), implement Glide? [https://github.com/bumptech/glide]
     }
 
-    public void getRestaurantData()
-    {
+    public void getRestaurantData() {
         database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -82,6 +78,14 @@ public class SearchActivity extends MainActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) { }
         });
+    }
+
+    public void openMap() {
+        // TODO: pass coordinates to map view based on selected restaurant
+    }
+
+    public void openMenu() {
+        // TODO: open pdf provided by URL in local pdf reader
     }
 
     @Override

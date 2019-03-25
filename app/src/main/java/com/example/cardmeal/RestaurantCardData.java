@@ -12,9 +12,9 @@ public class RestaurantCardData {
     protected String menu;
     protected List<String> days;
     protected List<String> hours;
-    protected boolean openStatus;
+    protected boolean isOpen;
 
-    public RestaurantCardData (String name, String description, String menu, String days, String hours, String openStatus) {
+    public RestaurantCardData (String name, String description, String menu, String days, String hours, String isOpen) {
         this.name = name;
         this.description = description;
         this.menu = menu;
@@ -26,10 +26,10 @@ public class RestaurantCardData {
                 this.hours.remove(i);
             }
         }
-        if (openStatus.equals("Open")) {
-            this.openStatus = true;
+        if (isOpen.equals("Open")) {
+            this.isOpen = true;
         } else {
-            this.openStatus = false;
+            this.isOpen = false;
         }
     }
 

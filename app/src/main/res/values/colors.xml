@@ -8,6 +8,11 @@
     <color name="customColorPrimaryDark">#181717</color>
     <color name="customColorSecondaryDark">#2B2727</color>
     <color name="customColorAccent">#FDB913</color>
+    <color name="customColorAccentDark">#8B660A</color>
+
+
+    <color name="customPositiveGreen">#2EE442</color>
+    <color name="customNegativeRed">#EE1212</color>
 
     <color name="ic_launcher_background">#3C3939</color>
 </resources>

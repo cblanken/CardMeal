@@ -25,36 +25,33 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         this.mRestaurantList = restaurantList;
     }
 
-    public class RestaurantViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private View details;
+    public class RestaurantViewHolder extends RecyclerView.ViewHolder{
+        private View cardDetails;
+        private View cardBody;
         private TextView restaurantName;
         private TextView restaurantDescription;
         private RatingBar restaurantRating;
         private TextView restaurantOpenStatus;
+        private TextView restaurantHours;
+        private TextView restaurantDays;
         private RecyclerView.Adapter mAdapter;
 
         public RestaurantViewHolder(View itemView, RestaurantListAdapter adapter) {
             super(itemView);
-            details = itemView.findViewById(R.id.details);
+            cardBody = (View) itemView.findViewById(R.id.cardView);
             restaurantName = (TextView) itemView.findViewById(R.id.cardName);
+            cardDetails = itemView.findViewById(R.id.details);
             restaurantDescription = (TextView) itemView.findViewById(R.id.cardDescription);
             restaurantOpenStatus = (TextView) itemView.findViewById(R.id.cardOpenStatus);
             restaurantRating = (RatingBar) itemView.findViewById(R.id.cardRating);
-            this.mAdapter = (RecyclerView.Adapter) adapter;
-            itemView.setOnClickListener(this);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-            restaurantName.setText("CLICKED!");
-            // TODO: link to appropriate view (map, social media, menu)
+            restaurantHours = (TextView) itemView.findViewById(R.id.cardHours);
+            restaurantDays = (TextView) itemView.findViewById(R.id.cardDays);
+            mAdapter = (RecyclerView.Adapter) adapter;
         }
     }
 
     @Override
     public RestaurantListAdapter.RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         // Inflate an item view
         View mItemView = mInflater.inflate(R.layout.restaurant_card, parent, false);
         return new RestaurantViewHolder(mItemView, this);
@@ -68,10 +65,26 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         holder.restaurantName.setText(mCurrent.name);
         holder.restaurantDescription.setText(mCurrent.description);
         holder.restaurantRating.setNumStars(mCurrent.rating);
-        holder.restaurantOpenStatus.setText(this.context.getResources().getString(R.string.open_closed));
+        if (mCurrent.isOpen) {
+            holder.restaurantOpenStatus.setTextColor(context.getResources().getColor(R.color.customPositiveGreen));
+        } else {
+            holder.restaurantOpenStatus.setTextColor(context.getResources().getColor(R.color.customNegativeRed));
+        }
+        holder.restaurantOpenStatus.setText(mCurrent.isOpen ? "OPEN" : "CLOSED");
+        String days = "";
+        String hours = "";
+        for (String d : mCurrent.days) {
+            days = days.concat(d + "\n");
+        }
+        for (String h : mCurrent.hours) {
+            hours = hours.concat(h + "\n");
+        }
+        holder.restaurantDays.setText(days);
+        holder.restaurantHours.setText(hours);
 
+        // Restaurant card expand functionality
         final boolean isExpanded = position == mExpandedPosition;
-        holder.details.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.cardDetails.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
         holder.itemView.setActivated(isExpanded);
         holder.itemView.findViewById(R.id.expand_card_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +95,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
