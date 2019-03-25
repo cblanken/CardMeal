@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string name="app_name">CardMeal</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -127,5 +127,10 @@
     <string name="yelp">Yelp</string>
     <string name="title_activity_settings">Settings</string>
     <string name="hours_header">Hours:</string>
+
+    //Twitter API keys
+    <string name="TWITTER_CONSUMER_KEY">jJiFJI2n7gNwjvV13zHZAU16k</string>
+    <string name="TWITTER_CONSUMER_SECRET">yEHmd50qrrkePpKYGRUvkAX742moKfpWZUYbz8gtD5Iqws6aRQ</string>
+    <string name="title_activity_twitter">TwitterActivity</string>
 
 </resources>
