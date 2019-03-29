@@ -17,13 +17,13 @@
         android:inputType="text"
         android:queryHint="@string/title_search"
         android:theme="@style/AppTheme"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/restaurantRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/restaurantRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="vertical"

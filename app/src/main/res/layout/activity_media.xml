@@ -21,11 +21,22 @@
         app:tabSelectedTextColor="@color/cardview_light_background"
         app:tabTextColor="@color/cardview_light_background" />
 
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/twitterRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/mediaGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mediaPager" />
+
+    <android.support.v4.view.ViewPager
         android:id="@+id/mediaPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/colorPrimaryDark"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/mediaGuideline"
         app:layout_constraintTop_toBottomOf="@+id/mediaTabLayout"
         tools:layout_editor_absoluteX="0dp">

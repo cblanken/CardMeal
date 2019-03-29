@@ -11,7 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import java.util.LinkedList;
 
-public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
+public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<RestaurantRecyclerViewAdapter.RestaurantViewHolder> {
 
     private Context context;
     private LayoutInflater mInflater;
@@ -19,7 +19,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     private int mExpandedPosition = -1;
     private ViewGroup recyclerView;
 
-    public RestaurantListAdapter(Context context, LinkedList<RestaurantCardData> restaurantList) {
+    public RestaurantRecyclerViewAdapter(Context context, LinkedList<RestaurantCardData> restaurantList) {
         mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mRestaurantList = restaurantList;
@@ -36,7 +36,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         private TextView restaurantDays;
         private RecyclerView.Adapter mAdapter;
 
-        public RestaurantViewHolder(View itemView, RestaurantListAdapter adapter) {
+        public RestaurantViewHolder(View itemView, RestaurantRecyclerViewAdapter adapter) {
             super(itemView);
             cardBody = (View) itemView.findViewById(R.id.cardView);
             restaurantName = (TextView) itemView.findViewById(R.id.cardName);
@@ -51,7 +51,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     }
 
     @Override
-    public RestaurantListAdapter.RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RestaurantRecyclerViewAdapter.RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate an item view
         View mItemView = mInflater.inflate(R.layout.restaurant_card, parent, false);
         return new RestaurantViewHolder(mItemView, this);

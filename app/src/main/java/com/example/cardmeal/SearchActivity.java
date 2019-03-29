@@ -26,7 +26,7 @@ public class SearchActivity extends MainActivity {
     private View searchView;
     private LinkedList<RestaurantCardData> restaurantCards;
     private RecyclerView recyclerView;
-    private RestaurantListAdapter adapter;
+    private RestaurantRecyclerViewAdapter adapter;
 
     private DatabaseReference database;
     private FirebaseAuth auth;
@@ -57,8 +57,8 @@ public class SearchActivity extends MainActivity {
                     }
                 });
 
-        adapter = new RestaurantListAdapter(this, restaurantCards);
-        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new RestaurantRecyclerViewAdapter(this, restaurantCards);
+        recyclerView = findViewById(R.id.restaurantRecyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // TODO: optimize recyclerView (laggy scrolling), implement Glide? [https://github.com/bumptech/glide]
