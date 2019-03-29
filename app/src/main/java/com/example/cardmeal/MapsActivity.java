@@ -1,5 +1,7 @@
 package com.example.cardmeal;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.SupportMapFragment;
@@ -13,7 +15,8 @@ import android.widget.LinearLayout.LayoutParams;
 public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
 
     private GoogleMap mMap;
-
+    private double longitude;
+    private double latitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +24,10 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
         // TODO: load banner/card if restaurant selected
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_maps, null), params);
+
+        Intent intent = getIntent();
+        longitude = intent.getDoubleExtra("long", 0);
+        latitude = intent.getDoubleExtra("lat", 0);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -43,10 +50,9 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
         mMap = googleMap;
 
         // TODO: lookup nearby restaurants on load and zoom and/or lock view of UofL
-        // Add a marker in Sydney and move the camera
-        LatLng uofl = new LatLng(38.215, -85.758);
-        mMap.addMarker(new MarkerOptions().position(uofl).title("Marker in Louisville"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uofl, 13.8f));
+        LatLng location = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(location).title("Marker in Louisville"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13.6f));
     }
 
     @Override

@@ -85,14 +85,6 @@ public class SearchActivity extends MainActivity {
         });
     }
 
-    public void openMap() {
-        // TODO: pass coordinates to map view based on selected restaurant
-    }
-
-    public void openMenu() {
-        // TODO: open pdf provided by URL in local pdf reader
-    }
-
     @Override
     int getContentViewId() {
         return R.layout.activity_search;
