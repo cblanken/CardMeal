@@ -8,6 +8,20 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.cardmeal.MediaActivity">
 
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible"
+        tools:layout_editor_absoluteY="48dp">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
+
     <android.support.design.widget.TabLayout
         android:id="@+id/mediaTabLayout"
         android:layout_width="match_parent"
@@ -29,7 +43,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.791"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mediaPager" />
+        app:layout_constraintTop_toTopOf="@+id/mediaPager" >
+
+    </android.support.v7.widget.RecyclerView>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/mediaPager"

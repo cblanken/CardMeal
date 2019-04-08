@@ -5,13 +5,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterConfig;
-import com.twitter.sdk.android.tweetui.SearchTimeline;
 import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter;
 import com.twitter.sdk.android.tweetui.UserTimeline;
 
@@ -41,8 +41,8 @@ public class MediaActivity extends MainActivity {
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.facebook)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.yelp)));
 
-//        viewPager = (ViewPager) findViewById(R.id.mediaPager);
-//        tabLayout.setupWithViewPager(viewPager);
+        viewPager = (ViewPager) findViewById(R.id.mediaPager);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
