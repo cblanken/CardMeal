@@ -31,44 +31,43 @@ public class MediaActivity extends MainActivity {
         super.onCreate(savedInstanceState);
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_media, null), params);
-        addContentView(getLayoutInflater().inflate(R.layout.timeline, null), params);
 
         // TODO: construct social media view layout
         // TODO: add swipe functionality between tabs (via fragments)
         // TODO: social media API setup (Twitter, Facebook, Yelp)
-
-        TwitterConfig config = new TwitterConfig.Builder(this)
-                .logger(new DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.TWITTER_CONSUMER_KEY), getResources().getString(R.string.TWITTER_CONSUMER_SECRET)))
-                .debug(true)
-                .build();
-        Twitter.initialize(config);
-
-        recyclerView = (RecyclerView) findViewById(R.id.twitterRecyclerView);
-        userTimeline = new UserTimeline.Builder()
-                .screenName("CardMeal")
-                .includeRetweets(true)
-                .includeReplies(true)
-                .build();
-
-        TweetTimelineRecyclerViewAdapter adapter =
-            new TweetTimelineRecyclerViewAdapter.Builder(this)
-                    .setTimeline(userTimeline)
-                    .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
-                    .build();
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         tabLayout = (TabLayout) findViewById(R.id.mediaTabLayout);
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.twitter)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.facebook)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.yelp)));
 
-        viewPager = (ViewPager) findViewById(R.id.mediaPager);
-        tabLayout.setupWithViewPager(viewPager);
+//        viewPager = (ViewPager) findViewById(R.id.mediaPager);
+//        tabLayout.setupWithViewPager(viewPager);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TwitterConfig config = new TwitterConfig.Builder(this)
+            .logger(new DefaultLogger(Log.DEBUG))
+            .twitterAuthConfig(new TwitterAuthConfig(getResources().getString(R.string.TWITTER_CONSUMER_KEY), getResources().getString(R.string.TWITTER_CONSUMER_SECRET)))
+            .build();
+        Twitter.initialize(config);
 
+        recyclerView = (RecyclerView) findViewById(R.id.twitterRecyclerView);
+        userTimeline = new UserTimeline.Builder()
+            .screenName("CardMeal")
+            .includeRetweets(true)
+            .includeReplies(true)
+            .build();
+
+        TweetTimelineRecyclerViewAdapter adapter = new TweetTimelineRecyclerViewAdapter.Builder(this)
+            .setTimeline(userTimeline)
+            .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
+            .build();
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
