@@ -48,8 +48,6 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // TODO: lookup nearby restaurants on load and zoom and/or lock view of UofL
         LatLng location = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(location).title("Marker in Louisville"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13.6f));

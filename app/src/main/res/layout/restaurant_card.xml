@@ -83,23 +83,25 @@
             <ImageView
                 android:id="@+id/mapButton"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="2dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
                 android:contentDescription="@string/title_map"
-                app:layout_constraintBottom_toBottomOf="@+id/divider"
-                app:layout_constraintEnd_toStartOf="@+id/menuButton"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/cardName"
                 app:srcCompat="@drawable/ic_map_black_24dp" />
 
             <ImageView
                 android:id="@+id/menuButton"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="2dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
                 android:contentDescription="@string/title_map"
-                app:layout_constraintBottom_toBottomOf="@+id/divider"
-                app:layout_constraintEnd_toStartOf="@+id/cardOpenStatus"
+                app:layout_constraintStart_toEndOf="@+id/mapButton"
+                app:layout_constraintTop_toBottomOf="@+id/cardName"
                 app:srcCompat="@drawable/ic_restaurant_menu_black_24dp" />
 
             <ImageView
@@ -133,26 +135,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/Lorem2" />
 
-            <RatingBar
-                android:id="@+id/cardRating"
-                style="@style/customRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:numStars="5"
-                android:rating="3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/cardName" />
-
             <TextView
                 android:id="@+id/cardReviews"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/reviews"
@@ -160,40 +146,39 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/divider"
                 app:layout_constraintEnd_toStartOf="@+id/cardOpenStatus"
-                app:layout_constraintStart_toEndOf="@+id/cardRating"
                 app:layout_constraintTop_toBottomOf="@+id/cardName" />
 
             <TextView
                 android:id="@+id/cardOpenStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="2dp"
                 android:gravity="center_vertical|end"
                 android:text="@string/open_closed"
                 android:textColor="@color/cardview_light_background"
-                app:layout_constraintBottom_toBottomOf="@+id/divider"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardName"
                 tools:text="@string/open_closed" />
 
             <View
                 android:id="@+id/divider"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="2dp"
                 android:background="@color/cardview_light_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/cardRating" />
+                app:layout_constraintTop_toBottomOf="@+id/cardOpenStatus" />
 
             <TextView
                 android:id="@+id/cardDescription"
                 android:layout_width="0dp"
-                android:layout_height="57dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:gravity="start|center_vertical"
                 android:text="@string/Lorem10"
@@ -201,7 +186,7 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/expand_card_btn"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/cardOpenStatus"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
                 tools:text="@string/Lorem10" />
 
             <ImageView

@@ -53,7 +53,6 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
             cardDetails = itemView.findViewById(R.id.details);
             restaurantDescription = (TextView) itemView.findViewById(R.id.cardDescription);
             restaurantOpenStatus = (TextView) itemView.findViewById(R.id.cardOpenStatus);
-            restaurantRating = (RatingBar) itemView.findViewById(R.id.cardRating);
             restaurantHours = (TextView) itemView.findViewById(R.id.cardHours);
             restaurantDays = (TextView) itemView.findViewById(R.id.cardDays);
             mAdapter = (RecyclerView.Adapter) adapter;
@@ -80,7 +79,6 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
         // Card text
         holder.restaurantName.setText(mCurrent.name);
         holder.restaurantDescription.setText(mCurrent.description);
-        holder.restaurantRating.setNumStars(mCurrent.rating);
 
         // Open/Closed status
         if (mCurrent.isOpen) {
@@ -111,7 +109,6 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
                 // TODO: get location from for particular restaurant from database or cache locally
                 double longitude = -85.756097;
                 double latitude = 38.217919;
-
 
                 Intent intent = new Intent(context, MapsActivity.class);
                 intent.setPackage("com.google.android.apps.maps");
