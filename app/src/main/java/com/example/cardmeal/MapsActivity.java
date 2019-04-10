@@ -26,8 +26,10 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
         addContentView(getLayoutInflater().inflate(R.layout.activity_maps, null), params);
 
         Intent intent = getIntent();
-        longitude = intent.getDoubleExtra("long", 0);
-        latitude = intent.getDoubleExtra("lat", 0);
+
+        // Default location: University of Louisville
+        longitude = intent.getDoubleExtra("long", -85.7586);
+        latitude = intent.getDoubleExtra("lat", 38.2130);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
