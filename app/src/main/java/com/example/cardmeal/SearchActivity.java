@@ -41,22 +41,6 @@ public class SearchActivity extends MainActivity {
         searchView = findViewById(R.id.searchView);
         restaurantCards = new LinkedList<RestaurantCardData>();
 
-        FirebaseApp.initializeApp(this);
-
-        database = FirebaseDatabase.getInstance().getReference();
-        auth = FirebaseAuth.getInstance();
-        auth.signInWithEmailAndPassword("cardmeal@gmail.com", "Z$yadlP055")
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete( Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            getRestaurantData();
-                        } else {
-                            Log.e("firebase", "authentication failed"); // do something here??
-                        }
-                    }
-                });
-
         adapter = new RestaurantRecyclerViewAdapter(this, restaurantCards);
         recyclerView = findViewById(R.id.restaurantRecyclerView);
         recyclerView.setAdapter(adapter);
@@ -83,6 +67,28 @@ public class SearchActivity extends MainActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) { }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        FirebaseApp.initializeApp(this);
+
+        database = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword("cardmeal@gmail.com", "Z$yadlP055")
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete( Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            getRestaurantData();
+                        } else {
+                            Log.e("firebase", "authentication failed"); // do something here??
+                        }
+                    }
+                });
+
     }
 
     @Override
