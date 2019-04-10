@@ -46,9 +46,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MoreActivity"
-            android:label="@string/title_more" />
-        <activity
             android:name=".MediaActivity"
             android:label="@string/title_activity_media" />
         <activity

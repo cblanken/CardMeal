@@ -49,9 +49,6 @@ public abstract class MainActivity extends AppCompatActivity implements BottomNa
                 case R.id.navigation_media:
                     startActivity(new Intent(this, MediaActivity.class));
                     break;
-                case R.id.navigation_more:
-                    startActivity(new Intent(this, MoreActivity.class));
-                    break;
                 default:
                     break;
             }
