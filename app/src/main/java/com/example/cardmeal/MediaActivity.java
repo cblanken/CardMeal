@@ -24,8 +24,6 @@ public class MediaActivity extends MainActivity {
     private RecyclerView recyclerView;
     private UserTimeline userTimeline;
 
-    private TwitterTimelineRecyclerViewAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -23,6 +23,11 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+    google()
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -47,10 +52,11 @@ dependencies {
     implementation 'com.twitter.sdk.android:twitter:3.1.1'
     // (Optional) Monetize using mopub
     implementation 'com.twitter.sdk.android:twitter-mopub:3.1.1'
-
     //Facebook APIs
     implementation 'com.facebook.android:facebook-applinks:[4,5)'
-
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 }
 
 apply plugin: 'com.google.gms.google-services' // Google Play services Gradle plugin

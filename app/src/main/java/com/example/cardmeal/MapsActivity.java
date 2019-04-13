@@ -25,11 +25,11 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_maps, null), params);
 
-        Intent intent = getIntent();
 
         // Default location: University of Louisville
-        longitude = intent.getDoubleExtra("long", -85.7586);
+        Intent intent = getIntent();
         latitude = intent.getDoubleExtra("lat", 38.2130);
+        longitude = intent.getDoubleExtra("long", -85.7586);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -52,7 +52,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
         mMap = googleMap;
         LatLng location = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(location).title("Marker in Louisville"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13.6f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 14.75f));
     }
 
     @Override

@@ -53,9 +53,11 @@ public class SearchActivity extends MainActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    restaurantCards.add(new RestaurantCardData(ds.child("Name").getValue(String.class),
+                    restaurantCards.add(new RestaurantCardData(
+                            ds.child("Name").getValue(String.class),
                             ds.child("Description").getValue(String.class),
                             ds.child("Menu").getValue(String.class),
+                            ds.child("Icon").getValue(String.class),
                             ds.child("Days").getValue(String.class),
                             ds.child("Hours").getValue(String.class),
                             ds.child("Status").getValue(String.class)));
