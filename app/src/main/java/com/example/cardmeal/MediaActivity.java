@@ -30,15 +30,8 @@ public class MediaActivity extends MainActivity {
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_media, null), params);
 
-        // TODO: construct social media view layout
-        // TODO: add swipe functionality between tabs (via fragments)
-        // TODO: social media API setup (Twitter, Facebook, Yelp)
-
         tabLayout = (TabLayout) findViewById(R.id.mediaTabLayout);
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.twitter)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.facebook)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.yelp)));
-
         viewPager = (ViewPager) findViewById(R.id.mediaPager);
         tabLayout.setupWithViewPager(viewPager);
     }

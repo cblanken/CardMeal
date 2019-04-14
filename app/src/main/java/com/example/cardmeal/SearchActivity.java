@@ -27,10 +27,8 @@ public class SearchActivity extends MainActivity {
     private LinkedList<RestaurantCardData> restaurantCards;
     private RecyclerView recyclerView;
     private RestaurantRecyclerViewAdapter adapter;
-
     private DatabaseReference database;
     private FirebaseAuth auth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class SearchActivity extends MainActivity {
 
         searchView = findViewById(R.id.searchView);
         restaurantCards = new LinkedList<RestaurantCardData>();
-
         adapter = new RestaurantRecyclerViewAdapter(this, restaurantCards);
         recyclerView = findViewById(R.id.restaurantRecyclerView);
         recyclerView.setAdapter(adapter);
@@ -62,7 +59,6 @@ public class SearchActivity extends MainActivity {
                             ds.child("Hours").getValue(String.class),
                             ds.child("Status").getValue(String.class)));
                 }
-
                 adapter.notifyDataSetChanged();
             }
 
@@ -74,9 +70,7 @@ public class SearchActivity extends MainActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         FirebaseApp.initializeApp(this);
-
         database = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword("cardmeal@gmail.com", "Z$yadlP055")
@@ -90,7 +84,6 @@ public class SearchActivity extends MainActivity {
                         }
                     }
                 });
-
     }
 
     @Override

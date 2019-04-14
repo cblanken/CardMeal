@@ -30,8 +30,14 @@
         android:background="@color/colorPrimary"
         android:theme="@style/AppTheme"
         app:layout_constraintBottom_toTopOf="@+id/mediaPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="100"
+        app:tabGravity="fill"
         app:tabIndicatorColor="@color/cardview_light_background"
+        app:tabMaxWidth="1000dp"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="@color/cardview_light_background"
         app:tabTextColor="@color/cardview_light_background" />
 
