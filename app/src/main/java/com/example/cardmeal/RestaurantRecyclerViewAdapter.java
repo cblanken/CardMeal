@@ -3,6 +3,7 @@ package com.example.cardmeal;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -94,6 +95,7 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
         }
         holder.restaurantOpenStatus.setText(mCurrent.isOpen ? "OPEN" : "CLOSED");
 
+        // Card background
         Glide.with(context)
                 .load(mCurrent.icon)
                 .into(new SimpleTarget<Drawable>() {
@@ -103,6 +105,7 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
                     }
                 });
 
+        // Menu button
         holder.menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,17 +121,29 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
             }
         });
 
+        // Map button
         holder.mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO: get location from for particular restaurant from database or cache locally
                 double latitude = 38.217919;
                 double longitude = -85.756097;
+                try {
+                    latitude = Double.parseDouble(mCurrent.latitude);
+                    longitude = Double.parseDouble(mCurrent.longitude);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
 
                 Intent intent = new Intent(context, MapsActivity.class);
                 intent.setPackage("com.google.android.apps.maps");
                 intent.putExtra("lat", latitude);
                 intent.putExtra("long", longitude);
+                intent.putExtra("index", position);
+                intent.putExtra("name", mCurrent.name);
+                Bundle locations = new Bundle();
+
+                intent.putExtras(locations);
 
                 context.startActivity(intent);
             }
