@@ -15,4 +15,6 @@
     <color name="customNegativeRed">#FA0404</color>
     <color name="ic_launcher_background">#3C3939</color>
     <color name="lightTextBackdrop">#BF313030</color>
+
+    <color name="transparent">#00FFFFFF</color>
 </resources>
