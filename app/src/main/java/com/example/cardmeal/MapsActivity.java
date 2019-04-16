@@ -27,12 +27,12 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
     private double longitude;
     private double latitude;
     private String name;
+    private int index;
     private ArrayList<Integer> mapIcons;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: load banner/card if restaurant selected
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_maps, null), params);
 
@@ -58,10 +58,10 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
 
         // Default location: University of Louisville
         Intent intent = getIntent();
-        latitude = intent.getDoubleExtra("lat", 38.2130);
+        latitude = intent.getDoubleExtra("lat", 38.2170);
         longitude = intent.getDoubleExtra("long", -85.7586);
         name = intent.getStringExtra("name");
-
+        index = intent.getIntExtra("index", -1);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -97,10 +97,16 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
             MarkerOptions marker = new MarkerOptions()
                 .position(new LatLng(la, lo))
                 .title(rd.name);
+
             mMap.addMarker(marker).setIcon(BitmapDescriptorFactory.fromResource(mapIcons.get(count++)));
+
         }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16.5f));
+        if (getIntent().getStringExtra("name") != null) {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16.5f));
+        } else {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15.5f));
+        }
     }
 
     @Override
