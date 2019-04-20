@@ -23,6 +23,7 @@ public class RestaurantData {
     private FirebaseAuth auth;
 
     public LinkedList<RestaurantCardData> restaurantCards;
+    public LinkedList<RestaurantCardData> restaurantCardsCopy;
 
     public static RestaurantData getInstance() {
         return restaurantData;
@@ -30,6 +31,7 @@ public class RestaurantData {
 
     private RestaurantData() {
         restaurantCards = new LinkedList<RestaurantCardData>();
+        restaurantCardsCopy = new LinkedList<RestaurantCardData>();
         FirebaseApp.initializeApp(context);
         database = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
@@ -45,6 +47,10 @@ public class RestaurantData {
                     }
                 }
             });
+    }
+
+    public LinkedList<RestaurantCardData> getRestaurantCardsCopy() {
+        return restaurantCardsCopy;
     }
 
     public void setRestaurantCards(RestaurantRecyclerViewAdapter adapter) {
@@ -67,6 +73,7 @@ public class RestaurantData {
                             ds.child("Status").getValue(String.class)));
                 }
                 adapter.notifyDataSetChanged();
+                restaurantCardsCopy.addAll(restaurantCards);
             }
 
             @Override

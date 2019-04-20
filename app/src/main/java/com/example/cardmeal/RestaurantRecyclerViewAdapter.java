@@ -14,7 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import android.net.Uri;
 import android.webkit.WebView;
@@ -31,6 +34,7 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
     private Context context;
     private LayoutInflater mInflater;
     private LinkedList<RestaurantCardData> mRestaurantList;
+    private ArrayList<RestaurantCardData> mRestaurantListCopy;
     private int mExpandedPosition = -1;
     private ViewGroup recyclerView;
 
@@ -38,6 +42,8 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
         mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mRestaurantList = restaurantList;
+        mRestaurantListCopy = new ArrayList<>();
+        mRestaurantListCopy.addAll(this.mRestaurantList);
     }
 
     public class RestaurantViewHolder extends RecyclerView.ViewHolder{
@@ -133,7 +139,6 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
         holder.mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: get location from for particular restaurant from database or cache locally
                 double latitude = 38.217919;
                 double longitude = -85.756097;
                 try {
@@ -183,6 +188,23 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
         });
     }
 
+    public void filter(String text) {
+        if(text.isEmpty()) {
+            mRestaurantList.clear();
+            mRestaurantList.addAll((RestaurantData.getInstance().getRestaurantCardsCopy()));
+        } else {
+            ArrayList<RestaurantCardData> result = new ArrayList<>();
+            text = text.toLowerCase();
+            for(RestaurantCardData item : RestaurantData.getInstance().getRestaurantCardsCopy()) {
+                if(item.name.toLowerCase().contains(text)) {
+                    result.add(item);
+                }
+            }
+            mRestaurantList.clear();
+            mRestaurantList.addAll(result);
+        }
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {

@@ -1,24 +1,15 @@
 package com.example.cardmeal;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-
-import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import android.support.v4.content.res.ResourcesCompat;
 import android.widget.LinearLayout.LayoutParams;
-
 import java.util.ArrayList;
 
 public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
@@ -29,6 +20,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
     private String name;
     private int index;
     private ArrayList<Integer> mapIcons;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +91,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
                 .title(rd.name);
 
             mMap.addMarker(marker).setIcon(BitmapDescriptorFactory.fromResource(mapIcons.get(count++)));
+
 
         }
 
