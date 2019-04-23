@@ -73,6 +73,7 @@ public class RestaurantData {
                             ds.child("Status").getValue(String.class)));
                 }
                 adapter.notifyDataSetChanged();
+                restaurantCardsCopy.clear();
                 restaurantCardsCopy.addAll(restaurantCards);
             }
 
