@@ -124,10 +124,15 @@ public class RestaurantRecyclerViewAdapter extends RecyclerView.Adapter<Restaura
                 // webView.loadUrl(mCurrent.menu);
                 // webView.setVisibility(View.VISIBLE);
 
+
                 String mimeType = "application/pdf";
                 Uri menuPdf = Uri.parse(mCurrent.menu);
-                Intent intent = new Intent(Intent.ACTION_VIEW).setDataAndType(menuPdf, mimeType);
-
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                if (mCurrent.name.contains("Ville Grill")) {
+                    intent.setData(menuPdf);
+                } else {
+                    intent.setDataAndType(menuPdf, mimeType);
+                }
                 Intent chooser = Intent.createChooser(intent, context.getResources().getString(R.string.chooser_title));
                 chooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
