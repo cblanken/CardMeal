@@ -9,8 +9,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import android.util.Log;
 import android.widget.LinearLayout.LayoutParams;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
 
@@ -19,7 +22,7 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
     private double latitude;
     private String name;
     private int index;
-    private ArrayList<Integer> mapIcons;
+    private HashMap<String, Integer> mapIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,25 +30,25 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
 
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         addContentView(getLayoutInflater().inflate(R.layout.activity_maps, null), params);
-
-        mapIcons = new ArrayList<Integer>() {{
-            add(R.mipmap.ville_grill_marker);
-            add(R.mipmap.chick_fil_a_marker);
-            add(R.mipmap.einstein_bros_marker);
-            add(R.mipmap.mcalisters_marker);
-            add(R.mipmap.panda_express_logo);
-            add(R.mipmap.sandwich_shack_marker);
-            add(R.mipmap.papa_johns_marker);
-            add(R.mipmap.src_cafe_marker);
-            add(R.mipmap.subway_marker);
-            add(R.mipmap.twisted_taco_marker);
-            add(R.mipmap.wendys_marker);
-            add(R.mipmap.starbucks_marker);
-            add(R.mipmap.starbucks_marker);
-            add(R.mipmap.starbucks_marker);
-            add(R.mipmap.aqua_sushi_marker);
-            add(R.mipmap.greens_to_go_marker);
-            add(R.mipmap.olilo_marker);
+        mapIcons = new HashMap<String, Integer>();
+        mapIcons = new HashMap<String, Integer>() {{
+            put("The Ville Grill", R.mipmap.ville_grill_marker);
+            put("Chick-fil-A", R.mipmap.chick_fil_a_marker);
+            put("Einstein Bros. Bagels", R.mipmap.einstein_bros_marker);
+            put("McAlisters Deli", R.mipmap.mcalisters_marker);
+            put("Panda Express", R.mipmap.panda_express_logo);
+            put("Sandwich Shack", R.mipmap.sandwich_shack_marker);
+            put("Papa Johns", R.mipmap.papa_johns_marker);
+            put("SRC Cafe", R.mipmap.src_cafe_marker);
+            put("Subway at Davidson Hall", R.mipmap.subway_marker);
+            put("Twisted Taco", R.mipmap.twisted_taco_marker);
+            put("Wendys", R.mipmap.wendys_marker);
+            put("Starbucks at Ekstrom Library", R.mipmap.starbucks_marker);
+            put("Starbucks at Health Sciences Center", R.mipmap.starbucks_marker);
+            put("Starbucks at SAC East", R.mipmap.starbucks_marker);
+            put("Aqua Sushi by Drakes", R.mipmap.aqua_sushi_marker);
+            put("Greens to Go", R.mipmap.greens_to_go_marker);
+            put("Olilo", R.mipmap.olilo_marker);
         }};
 
         // Default location: University of Louisville
@@ -89,8 +92,8 @@ public class MapsActivity extends MainActivity implements OnMapReadyCallback  {
             MarkerOptions marker = new MarkerOptions()
                 .position(new LatLng(la, lo))
                 .title(rd.name);
-
-            mMap.addMarker(marker).setIcon(BitmapDescriptorFactory.fromResource(mapIcons.get(count++)));
+            Log.d("NAMEASDFJKL;", rd.name.replace("’", ""));
+            mMap.addMarker(marker).setIcon(BitmapDescriptorFactory.fromResource(mapIcons.get(rd.name.replaceAll("’", "").replaceAll("'", ""))));
 
 
         }
